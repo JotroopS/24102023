@@ -279,12 +279,12 @@
             // 
             // ElencoProdotti
             // 
-            this.ElencoProdotti.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ElencoProdotti.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ElencoProdotti.FormattingEnabled = true;
-            this.ElencoProdotti.ItemHeight = 16;
+            this.ElencoProdotti.ItemHeight = 20;
             this.ElencoProdotti.Location = new System.Drawing.Point(456, 18);
             this.ElencoProdotti.Name = "ElencoProdotti";
-            this.ElencoProdotti.Size = new System.Drawing.Size(332, 420);
+            this.ElencoProdotti.Size = new System.Drawing.Size(332, 424);
             this.ElencoProdotti.TabIndex = 23;
             // 
             // Form1

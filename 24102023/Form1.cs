@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -73,7 +74,7 @@ namespace _24102023
         private void ModificaNome_Click(object sender, EventArgs e)
         {
             Ricerc = Ricerca.Text;
-            for (int i = 0; i < p.Length; ++i)
+            for (int i = 0; i < p.Length; i++)
             {
                 if (p[i].nome == Ricerc)
                 {
@@ -84,9 +85,14 @@ namespace _24102023
                     visualizza(p);
                     break;
                 }
-                else
+                else if (i == p.Length - 1)
                 {
                     MessageBox.Show("Il prodotto non esiste");
+                    break;
+                }
+                if (string.IsNullOrEmpty(NuovoNome.Text))
+                {
+                    MessageBox.Show("Inserire il nuovo nome da inserire");
                     break;
                 }
             }
@@ -95,23 +101,28 @@ namespace _24102023
         private void ModificaPrezzo_Click(object sender, EventArgs e)
         {
             Ricerc = Ricerca.Text;
-            for (int i = 0; i < p.Length; ++i)
-            {
-                if (p[i].nome == Ricerc)
+                for (int i = 0; i < p.Length; i++)
                 {
-                    p[i].prezzo = double.Parse(NuovoPrezzo.Text);
-                    MessageBox.Show("Modificato");
-                    Ricerca.Clear();
-                    NuovoPrezzo.Clear();
-                    visualizza(p);
+                    if (p[i].nome == Ricerc)
+                    {
+                        p[i].prezzo = double.Parse(NuovoPrezzo.Text);
+                        MessageBox.Show("Modificato");
+                        Ricerca.Clear();
+                        NuovoPrezzo.Clear();
+                        visualizza(p);
+                        break;
+                    }
+                    else if (i == p.Length - 1)
+                    {
+                        MessageBox.Show("Il prodotto non esiste");
+                        break;
+                    }
+                    if (string.IsNullOrEmpty(NuovoPrezzo.Text))
+                    {
+                        MessageBox.Show("Inserire il nuovo prezzo da inserire");
                     break;
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Il prodotto non esiste");
-                    break;
-                }
-            }
         }
 
         private void Cancella_Click(object sender, EventArgs e)
@@ -125,6 +136,7 @@ namespace _24102023
             {
                 var prodottiOrdinati = p.Take(dim).OrderBy(item => item.nome).ToArray();
                 Array.Copy(prodottiOrdinati, p, dim);
+                MessageBox.Show("Elementi ordinati");
                 visualizza(p);
             }
             else
@@ -167,19 +179,16 @@ namespace _24102023
             {
                 ElencoProdotti.Items.Clear();
                 string lettura;
-                if (File.Exists("Salva.txt"))
+                StreamReader leggi = new StreamReader("Salva.Txt");
+                lettura = leggi.ReadLine();
+                while (lettura != null)
                 {
-                    StreamReader leggi = new StreamReader("Salva.Txt");
+                    ElencoProdotti.Items.Add(lettura);
                     lettura = leggi.ReadLine();
-                    while (lettura != null)
-                    {
-                        ElencoProdotti.Items.Add(lettura);
-                        lettura = leggi.ReadLine();
-                        dim++;
-                    }
-                    leggi.Close();
-                    MessageBox.Show("File letto correttamente");
+                    dim++;
                 }
+                leggi.Close();
+                MessageBox.Show("File letto correttamente");
             }
             else
             {
@@ -282,7 +291,7 @@ namespace _24102023
                 }
                 visualizza(p);
                 return;
-            }//
+            }
         }
     }
 }
