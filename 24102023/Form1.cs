@@ -87,7 +87,7 @@ namespace _24102023
                 }
                 else if (i == p.Length - 1)
                 {
-                    MessageBox.Show("Il prodotto non esiste");
+                    MessageBox.Show($"Il prodotto {Ricerc} non esiste");
                     break;
                 }
                 if (string.IsNullOrEmpty(NuovoNome.Text))
@@ -114,7 +114,7 @@ namespace _24102023
                     }
                     else if (i == p.Length - 1)
                     {
-                        MessageBox.Show("Il prodotto non esiste");
+                        MessageBox.Show($"Il prodotto {Ricerc} non esiste");
                         break;
                     }
                     if (string.IsNullOrEmpty(NuovoPrezzo.Text))
@@ -125,19 +125,14 @@ namespace _24102023
                 }
         }
 
-        private void Cancella_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Ordina_Click(object sender, EventArgs e)
         {
-            if (dim > 1)
+            if (dim >= 2)
             {
                 var prodottiOrdinati = p.Take(dim).OrderBy(item => item.nome).ToArray();
                 Array.Copy(prodottiOrdinati, p, dim);
-                MessageBox.Show("Elementi ordinati");
                 visualizza(p);
+                MessageBox.Show("Elementi ordinati");
             }
             else
             {
@@ -292,6 +287,42 @@ namespace _24102023
                 visualizza(p);
                 return;
             }
+        }
+
+        private void CancellaFisica_Click_1(object sender, EventArgs e)
+        {
+            Ricerc = Ricerca.Text;
+            if (string.IsNullOrEmpty(Ricerca.Text))
+            {
+                MessageBox.Show("Inserire il prodotto da eliminare");
+            }
+            if (dim > 0)
+            {
+                for (int i = 0; i < dim; i++)
+                {
+                    if (p[i].nome == Ricerc)
+                    {
+                        for (int j = i; j < dim; j++)
+                        {
+                            p[j] = p[j + 1];
+                        }
+                        dim--;
+                        visualizza(p);
+                        MessageBox.Show("Elemento eliminato");
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("La lista è vuota");
+            }
+            MessageBox.Show($"Il prodotto {Ricerc} non è presente nella lista");
+        }
+
+        private void CancellaLogica_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
