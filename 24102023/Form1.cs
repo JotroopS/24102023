@@ -35,6 +35,7 @@ namespace _24102023
 
         private void Aggiungi_Click(object sender, EventArgs e)
         {
+            string percorso = "Salva.Txt";
             if (string.IsNullOrEmpty(Nome.Text))
             {
                 MessageBox.Show("Inserire un nome");
@@ -45,14 +46,19 @@ namespace _24102023
             }
             else
             {
-                p[dim].nome = Nome.Text;
-                p[dim].prezzo = double.Parse(Prezzo.Text);
-                dim++;
-                MessageBox.Show("Aggiunto");
-                Nome.Clear();
-                Prezzo.Clear();
-                visualizza(p);
+                aggiungi(Nome.Text, double.Parse(Prezzo.Text), percorso);
             }
+        }
+        private void aggiungi(string nome, double prezzo, string percorso)
+        {
+            int righe = 64;
+            StreamWriter salva = new StreamWriter("Salva.Txt");
+            var Stream = new FileStream(percorso, FileMode.Append, FileAccess.Write, FileShare.Read);
+            salva.Write($"{nome};{prezzo};1;0;".PadRight(righe - 4) + "##");
+            MessageBox.Show("Aggiunto");
+            Nome.Clear();
+            Prezzo.Clear();
+            salva.Close();
         }
         public string prodString(prodotto p)
         {
@@ -124,50 +130,6 @@ namespace _24102023
                     }
                 }
         }
-
-        private void Ordina_Click(object sender, EventArgs e)
-        {
-            if (dim >= 2)
-            {
-                var prodottiOrdinati = p.Take(dim).OrderBy(item => item.nome).ToArray();
-                Array.Copy(prodottiOrdinati, p, dim);
-                visualizza(p);
-                MessageBox.Show("Elementi ordinati");
-            }
-            else
-            {
-                MessageBox.Show("Inserire almeno due prodotti");
-            }
-        }
-
-        private void Somma_Click(object sender, EventArgs e)
-        {
-            if (dim > 0)
-            {
-                double tot = 0;
-                for (int i = 0; i < dim; i++)
-                {
-                    tot += p[i].prezzo;
-                }
-                MessageBox.Show("Il prezzo totale è " + tot + "€");
-            }
-            else
-            {
-                MessageBox.Show("La lista è vuota");
-            }
-        }
-
-        private void Salva_Click(object sender, EventArgs e)
-        {
-            StreamWriter salva = new StreamWriter("Salva.Txt");
-            for (int i = 0; i < dim; i++)
-            {
-                salva.WriteLine(p[i].nome + ": " + p[i].prezzo + "€");
-            }
-            salva.Close();
-            MessageBox.Show("File salvato");
-        }
-
         private void Leggi_Click(object sender, EventArgs e)
         {
             if (File.Exists("Salva.Txt"))
@@ -190,106 +152,7 @@ namespace _24102023
                 MessageBox.Show("Il file non esiste");
             }
         }
-
-        private void Minimo_Click(object sender, EventArgs e)
-        {
-            if (dim > 0)
-            {
-                double minf = 100000000000000000, min, min1;
-                string minnf = "";
-                for (int i = 0; i < dim; i++)
-                {
-                    for (int j = i + 1; j < dim; j++)
-                    {
-                        min = p[i].prezzo;
-                        string minn = p[i].nome;
-                        min1 = p[j].prezzo;
-                        string minn1 = p[j].nome;
-                        if (min < min1)
-                        {
-                            if (minf > min)
-                            {
-                                minf = min;
-                                minnf = minn;
-                            }
-                        }
-                        else
-                        {
-                            if (minf > min1)
-                            {
-                                minf = min1;
-                                minnf = minn1;
-                            }
-                        }
-                    }
-                }
-                MessageBox.Show("Il prodotto con il prezzo minore è " + minnf + " con prezzo " + minf + "€");
-            }
-            else
-            {
-                MessageBox.Show("Non sono presenti prodotti");
-            }
-        }
-
-        private void Massimo_Click(object sender, EventArgs e)
-        {
-            if (dim > 0)
-            {
-                double maxf = 0, max, max1;
-                string maxnf = "";
-                for (int i = 0; i < dim; i++)
-                {
-                    for (int j = i + 1; j < dim; j++)
-                    {
-                        max = p[i].prezzo;
-                        string maxn = p[i].nome;
-                        max1 = p[j].prezzo;
-                        string maxn1 = p[j].nome;
-                        if (max > max1)
-                        {
-                            if (maxf < max)
-                            {
-                                maxf = max;
-                                maxnf = maxn;
-                            }
-                        }
-                        else
-                        {
-                            if (maxf < max1)
-                            {
-                                maxf = max1;
-                                maxnf = maxn1;
-                            }
-                        }
-                    }
-                }
-                MessageBox.Show("Il prodotto con il prezzo maggiore è " + maxnf + " con prezzo " + maxf + "€");
-            }
-            else
-            {
-                MessageBox.Show("Non sono presenti prodotti");
-            }
-        }
-
-        private void Percent_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(Perce.Text))
-            {
-                MessageBox.Show("Inserire una percentuale");
-            }
-            else
-            {
-                double percentuale = Convert.ToDouble(Perce.Text);
-                for (int i = 0; i < dim; i++)
-                {
-                    p[i].prezzo += p[i].prezzo * (percentuale / 100);
-                }
-                visualizza(p);
-                return;
-            }
-        }
-
-        private void CancellaFisica_Click_1(object sender, EventArgs e)
+        private void Cancella_Click(object sender, EventArgs e)
         {
             Ricerc = Ricerca.Text;
             if (string.IsNullOrEmpty(Ricerca.Text))
@@ -318,11 +181,6 @@ namespace _24102023
                 MessageBox.Show("La lista è vuota");
             }
             MessageBox.Show($"Il prodotto {Ricerc} non è presente nella lista");
-        }
-
-        private void CancellaLogica_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
