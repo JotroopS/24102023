@@ -41,9 +41,8 @@
             this.Aggiungi = new System.Windows.Forms.Button();
             this.ModificaNome = new System.Windows.Forms.Button();
             this.ModificaPrezzo = new System.Windows.Forms.Button();
-            this.Cancella = new System.Windows.Forms.Button();
-            this.Leggi = new System.Windows.Forms.Button();
-            this.ElencoProdotti = new System.Windows.Forms.ListBox();
+            this.Reset = new System.Windows.Forms.Button();
+            this.CancellaF = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -164,46 +163,35 @@
             this.ModificaPrezzo.UseVisualStyleBackColor = true;
             this.ModificaPrezzo.Click += new System.EventHandler(this.ModificaPrezzo_Click);
             // 
-            // Cancella
+            // Reset
             // 
-            this.Cancella.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cancella.Location = new System.Drawing.Point(239, 221);
-            this.Cancella.Name = "Cancella";
-            this.Cancella.Size = new System.Drawing.Size(122, 71);
-            this.Cancella.TabIndex = 15;
-            this.Cancella.Text = "Cancella";
-            this.Cancella.UseVisualStyleBackColor = true;
-            this.Cancella.Click += new System.EventHandler(this.Cancella_Click);
+            this.Reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Reset.Location = new System.Drawing.Point(5, 222);
+            this.Reset.Name = "Reset";
+            this.Reset.Size = new System.Drawing.Size(126, 59);
+            this.Reset.TabIndex = 24;
+            this.Reset.Text = "Reset";
+            this.Reset.UseVisualStyleBackColor = true;
+            this.Reset.Click += new System.EventHandler(this.Reset_Click);
             // 
-            // Leggi
+            // CancellaF
             // 
-            this.Leggi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Leggi.Location = new System.Drawing.Point(239, 298);
-            this.Leggi.Name = "Leggi";
-            this.Leggi.Size = new System.Drawing.Size(122, 71);
-            this.Leggi.TabIndex = 19;
-            this.Leggi.Text = "Leggi il file";
-            this.Leggi.UseVisualStyleBackColor = true;
-            this.Leggi.Click += new System.EventHandler(this.Leggi_Click);
-            // 
-            // ElencoProdotti
-            // 
-            this.ElencoProdotti.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ElencoProdotti.FormattingEnabled = true;
-            this.ElencoProdotti.ItemHeight = 20;
-            this.ElencoProdotti.Location = new System.Drawing.Point(397, 14);
-            this.ElencoProdotti.Name = "ElencoProdotti";
-            this.ElencoProdotti.Size = new System.Drawing.Size(332, 424);
-            this.ElencoProdotti.TabIndex = 23;
+            this.CancellaF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancellaF.Location = new System.Drawing.Point(239, 220);
+            this.CancellaF.Name = "CancellaF";
+            this.CancellaF.Size = new System.Drawing.Size(122, 61);
+            this.CancellaF.TabIndex = 25;
+            this.CancellaF.Text = "Cancellazione fisica";
+            this.CancellaF.UseVisualStyleBackColor = true;
+            this.CancellaF.Click += new System.EventHandler(this.CancellaF_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ElencoProdotti);
-            this.Controls.Add(this.Leggi);
-            this.Controls.Add(this.Cancella);
+            this.Controls.Add(this.CancellaF);
+            this.Controls.Add(this.Reset);
             this.Controls.Add(this.ModificaPrezzo);
             this.Controls.Add(this.ModificaNome);
             this.Controls.Add(this.Aggiungi);
@@ -240,9 +228,8 @@
         private System.Windows.Forms.Button Aggiungi;
         private System.Windows.Forms.Button ModificaNome;
         private System.Windows.Forms.Button ModificaPrezzo;
-        private System.Windows.Forms.Button Cancella;
-        private System.Windows.Forms.Button Leggi;
-        private System.Windows.Forms.ListBox ElencoProdotti;
+        private System.Windows.Forms.Button Reset;
+        private System.Windows.Forms.Button CancellaF;
     }
 }
 

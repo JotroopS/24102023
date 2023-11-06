@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace _24102023
 {
@@ -27,6 +28,8 @@ namespace _24102023
             p = new prodotto[100];
             dim = 0;
         }
+        public string percorso = "Salva.dat";
+        public int riga = 64;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -35,7 +38,6 @@ namespace _24102023
 
         private void Aggiungi_Click(object sender, EventArgs e)
         {
-            string percorso = "Salva.Txt";
             if (string.IsNullOrEmpty(Nome.Text))
             {
                 MessageBox.Show("Inserire un nome");
@@ -46,34 +48,28 @@ namespace _24102023
             }
             else
             {
-                aggiungi(Nome.Text, double.Parse(Prezzo.Text), percorso);
+                p[dim].nome = Nome.Text;
+                p[dim].prezzo = float.Parse(Prezzo.Text);
+                aggiungi(p[dim].nome, p[dim].prezzo, percorso);
+                dim++;
+                MessageBox.Show("Aggiunto");
+                Nome.Clear();
+                Prezzo.Clear();
             }
         }
-        private void aggiungi(string nome, double prezzo, string percorso)
-        {
-            int righe = 64;
-            StreamWriter salva = new StreamWriter("Salva.Txt");
-            var Stream = new FileStream(percorso, FileMode.Append, FileAccess.Write, FileShare.Read);
-            salva.Write($"{nome};{prezzo};1;0;".PadRight(righe - 4) + "##");
-            MessageBox.Show("Aggiunto");
-            Nome.Clear();
-            Prezzo.Clear();
-            salva.Close();
-        }
-        public string prodString(prodotto p)
-        {
-            return p.nome + ": " + p.prezzo.ToString() + "€";
-        }
-        public void visualizza(prodotto[] pp)
-        {
-            ElencoProdotti.Items.Clear();
-            for (int i = 0; i < dim; i++)
-
+            private void aggiungi(string nome, double prezzo, string percorso)
             {
-                ElencoProdotti.Items.Add(prodString(pp[i]));
-
-
+                var apertura = new FileStream(percorso, FileMode.Append, FileAccess.Write, FileShare.Read);
+                StreamWriter salva = new StreamWriter(apertura);
+                salva.WriteLine($"{nome};{prezzo};1;0;".PadRight(riga - 4) + "##");
+                salva.Close();
             }
+        private void resetta(string percorso)
+        {
+            var apertura = new FileStream(percorso, FileMode.Truncate, FileAccess.Write, FileShare.Read);
+            StreamWriter salva = new StreamWriter(apertura);
+            salva.WriteLine(string.Empty);
+            salva.Close();
         }
         public string Ricerc;
 
@@ -88,7 +84,6 @@ namespace _24102023
                     MessageBox.Show("Modificato");
                     Ricerca.Clear();
                     NuovoNome.Clear();
-                    visualizza(p);
                     break;
                 }
                 else if (i == p.Length - 1)
@@ -107,80 +102,48 @@ namespace _24102023
         private void ModificaPrezzo_Click(object sender, EventArgs e)
         {
             Ricerc = Ricerca.Text;
-                for (int i = 0; i < p.Length; i++)
+            for (int i = 0; i < p.Length; i++)
+            {
+                if (p[i].nome == Ricerc)
                 {
-                    if (p[i].nome == Ricerc)
-                    {
-                        p[i].prezzo = double.Parse(NuovoPrezzo.Text);
-                        MessageBox.Show("Modificato");
-                        Ricerca.Clear();
-                        NuovoPrezzo.Clear();
-                        visualizza(p);
-                        break;
-                    }
-                    else if (i == p.Length - 1)
-                    {
-                        MessageBox.Show($"Il prodotto {Ricerc} non esiste");
-                        break;
-                    }
-                    if (string.IsNullOrEmpty(NuovoPrezzo.Text))
-                    {
-                        MessageBox.Show("Inserire il nuovo prezzo da inserire");
+                    p[i].prezzo = double.Parse(NuovoPrezzo.Text);
+                    MessageBox.Show("Modificato");
+                    Ricerca.Clear();
+                    NuovoPrezzo.Clear();
                     break;
-                    }
                 }
-        }
-        private void Leggi_Click(object sender, EventArgs e)
-        {
-            if (File.Exists("Salva.Txt"))
-            {
-                ElencoProdotti.Items.Clear();
-                string lettura;
-                StreamReader leggi = new StreamReader("Salva.Txt");
-                lettura = leggi.ReadLine();
-                while (lettura != null)
+                else if (i == p.Length - 1)
                 {
-                    ElencoProdotti.Items.Add(lettura);
-                    lettura = leggi.ReadLine();
-                    dim++;
+                    MessageBox.Show($"Il prodotto {Ricerc} non esiste");
+                    break;
                 }
-                leggi.Close();
-                MessageBox.Show("File letto correttamente");
-            }
-            else
-            {
-                MessageBox.Show("Il file non esiste");
+                if (string.IsNullOrEmpty(NuovoPrezzo.Text))
+                {
+                    MessageBox.Show("Inserire il nuovo prezzo da inserire");
+                    break;
+                }
             }
         }
-        private void Cancella_Click(object sender, EventArgs e)
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            resetta(percorso);
+            MessageBox.Show("Resettato");
+        }
+        private int indice (string nome, double prezzo, string percorso)
         {
             Ricerc = Ricerca.Text;
-            if (string.IsNullOrEmpty(Ricerca.Text))
+            var apertura = new FileStream(percorso, FileMode.Append, FileAccess.Write, FileShare.Read);
+            StreamWriter salva = new StreamWriter(apertura);
+            for (int i = 0; i.ToString() == null; i++)
             {
-                MessageBox.Show("Inserire il prodotto da eliminare");
+                
             }
-            if (dim > 0)
-            {
-                for (int i = 0; i < dim; i++)
-                {
-                    if (p[i].nome == Ricerc)
-                    {
-                        for (int j = i; j < dim; j++)
-                        {
-                            p[j] = p[j + 1];
-                        }
-                        dim--;
-                        visualizza(p);
-                        MessageBox.Show("Elemento eliminato");
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("La lista è vuota");
-            }
-            MessageBox.Show($"Il prodotto {Ricerc} non è presente nella lista");
+            return -1;
+        }
+
+        private void CancellaF_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
