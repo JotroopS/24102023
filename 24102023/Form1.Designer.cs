@@ -39,10 +39,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.NuovoPrezzo = new System.Windows.Forms.TextBox();
             this.Aggiungi = new System.Windows.Forms.Button();
-            this.ModificaNome = new System.Windows.Forms.Button();
-            this.ModificaPrezzo = new System.Windows.Forms.Button();
             this.Reset = new System.Windows.Forms.Button();
             this.CancellaF = new System.Windows.Forms.Button();
+            this.Modif = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -133,35 +132,13 @@
             // Aggiungi
             // 
             this.Aggiungi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Aggiungi.Location = new System.Drawing.Point(239, 3);
+            this.Aggiungi.Location = new System.Drawing.Point(239, 28);
             this.Aggiungi.Name = "Aggiungi";
             this.Aggiungi.Size = new System.Drawing.Size(122, 64);
             this.Aggiungi.TabIndex = 12;
             this.Aggiungi.Text = "Aggiungi";
             this.Aggiungi.UseVisualStyleBackColor = true;
             this.Aggiungi.Click += new System.EventHandler(this.Aggiungi_Click);
-            // 
-            // ModificaNome
-            // 
-            this.ModificaNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ModificaNome.Location = new System.Drawing.Point(239, 73);
-            this.ModificaNome.Name = "ModificaNome";
-            this.ModificaNome.Size = new System.Drawing.Size(122, 76);
-            this.ModificaNome.TabIndex = 13;
-            this.ModificaNome.Text = "Modifica il nome";
-            this.ModificaNome.UseVisualStyleBackColor = true;
-            this.ModificaNome.Click += new System.EventHandler(this.ModificaNome_Click);
-            // 
-            // ModificaPrezzo
-            // 
-            this.ModificaPrezzo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ModificaPrezzo.Location = new System.Drawing.Point(239, 154);
-            this.ModificaPrezzo.Name = "ModificaPrezzo";
-            this.ModificaPrezzo.Size = new System.Drawing.Size(122, 61);
-            this.ModificaPrezzo.TabIndex = 14;
-            this.ModificaPrezzo.Text = "Modifica il prezzo";
-            this.ModificaPrezzo.UseVisualStyleBackColor = true;
-            this.ModificaPrezzo.Click += new System.EventHandler(this.ModificaPrezzo_Click);
             // 
             // Reset
             // 
@@ -185,15 +162,25 @@
             this.CancellaF.UseVisualStyleBackColor = true;
             this.CancellaF.Click += new System.EventHandler(this.CancellaF_Click);
             // 
+            // Modif
+            // 
+            this.Modif.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Modif.Location = new System.Drawing.Point(239, 135);
+            this.Modif.Name = "Modif";
+            this.Modif.Size = new System.Drawing.Size(122, 63);
+            this.Modif.TabIndex = 26;
+            this.Modif.Text = "Modifica";
+            this.Modif.UseVisualStyleBackColor = true;
+            this.Modif.Click += new System.EventHandler(this.Modif_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Modif);
             this.Controls.Add(this.CancellaF);
             this.Controls.Add(this.Reset);
-            this.Controls.Add(this.ModificaPrezzo);
-            this.Controls.Add(this.ModificaNome);
             this.Controls.Add(this.Aggiungi);
             this.Controls.Add(this.NuovoPrezzo);
             this.Controls.Add(this.label5);
@@ -226,10 +213,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox NuovoPrezzo;
         private System.Windows.Forms.Button Aggiungi;
-        private System.Windows.Forms.Button ModificaNome;
-        private System.Windows.Forms.Button ModificaPrezzo;
         private System.Windows.Forms.Button Reset;
         private System.Windows.Forms.Button CancellaF;
+        private System.Windows.Forms.Button Modif;
     }
 }
 

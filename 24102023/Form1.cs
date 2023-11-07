@@ -52,7 +52,6 @@ namespace _24102023
                 p[dim].prezzo = float.Parse(Prezzo.Text);
                 aggiungi(p[dim].nome, p[dim].prezzo, percorso);
                 dim++;
-                MessageBox.Show("Aggiunto");
                 Nome.Clear();
                 Prezzo.Clear();
             }
@@ -66,84 +65,67 @@ namespace _24102023
             }
         private void resetta(string percorso)
         {
-            var apertura = new FileStream(percorso, FileMode.Truncate, FileAccess.Write, FileShare.Read);
-            StreamWriter salva = new StreamWriter(apertura);
-            salva.WriteLine(string.Empty);
-            salva.Close();
-        }
-        public string Ricerc;
-
-        private void ModificaNome_Click(object sender, EventArgs e)
-        {
-            Ricerc = Ricerca.Text;
-            for (int i = 0; i < p.Length; i++)
-            {
-                if (p[i].nome == Ricerc)
-                {
-                    p[i].nome = NuovoNome.Text;
-                    MessageBox.Show("Modificato");
-                    Ricerca.Clear();
-                    NuovoNome.Clear();
-                    break;
-                }
-                else if (i == p.Length - 1)
-                {
-                    MessageBox.Show($"Il prodotto {Ricerc} non esiste");
-                    break;
-                }
-                if (string.IsNullOrEmpty(NuovoNome.Text))
-                {
-                    MessageBox.Show("Inserire il nuovo nome da inserire");
-                    break;
-                }
-            }
-        }
-
-        private void ModificaPrezzo_Click(object sender, EventArgs e)
-        {
-            Ricerc = Ricerca.Text;
-            for (int i = 0; i < p.Length; i++)
-            {
-                if (p[i].nome == Ricerc)
-                {
-                    p[i].prezzo = double.Parse(NuovoPrezzo.Text);
-                    MessageBox.Show("Modificato");
-                    Ricerca.Clear();
-                    NuovoPrezzo.Clear();
-                    break;
-                }
-                else if (i == p.Length - 1)
-                {
-                    MessageBox.Show($"Il prodotto {Ricerc} non esiste");
-                    break;
-                }
-                if (string.IsNullOrEmpty(NuovoPrezzo.Text))
-                {
-                    MessageBox.Show("Inserire il nuovo prezzo da inserire");
-                    break;
-                }
-            }
+            File.WriteAllText(percorso, string.Empty);
         }
         private void Reset_Click(object sender, EventArgs e)
         {
             resetta(percorso);
             MessageBox.Show("Resettato");
         }
-        private int indice (string nome, double prezzo, string percorso)
+        private int Indice(string nome)
         {
-            Ricerc = Ricerca.Text;
-            var apertura = new FileStream(percorso, FileMode.Append, FileAccess.Write, FileShare.Read);
-            StreamWriter salva = new StreamWriter(apertura);
-            for (int i = 0; i.ToString() == null; i++)
+            int riga = 0;
+            using (StreamReader salva = File.OpenText("Salva.dat"))
             {
-                
+                string lettore;
+                while ((lettore = salva.ReadLine()) != null)
+                {
+                    string[] dati = lettore.Split(';');
+                    if (dati[3] == "0" && dati[0] == nome)
+                    {
+                        salva.Close();
+                        return riga;
+                    }
+                    riga++;
+                }
             }
             return -1;
         }
-
+        public void Modifica(string nome, double prezzo, string percorso, int lunghezza)
+        {
+            int indice = Indice(Ricerca.Text);
+            string riga;
+            var salva = new FileStream(percorso, FileMode.Open, FileAccess.Write);
+            BinaryWriter writer = new BinaryWriter(salva);
+            salva.Seek(lunghezza * indice, SeekOrigin.Begin);
+            riga = $"{nome};{prezzo};1;0;".PadRight(lunghezza - 4) + "##";
+            byte[] bytes = Encoding.UTF8.GetBytes(riga);
+            writer.Write(bytes);
+            writer.Close();
+            salva.Close();
+        }
+        public void CancellazioneF(string percorso, int lunghezza)
+        {
+            int indice = Indice(Ricerca.Text);
+            var salva = new FileStream(percorso, FileMode.Open, FileAccess.Write);
+            BinaryWriter writer = new BinaryWriter(salva);
+            salva.Seek(lunghezza * indice, SeekOrigin.Begin);
+            writer.Close();
+            salva.Close();
+        }
         private void CancellaF_Click(object sender, EventArgs e)
         {
+            CancellazioneF(percorso, riga);
+            MessageBox.Show("Eliminato");
+            Ricerca.Clear();
+        }
 
+        private void Modif_Click(object sender, EventArgs e)
+        {
+            Modifica(NuovoNome.Text, double.Parse(NuovoPrezzo.Text), percorso, riga);
+            Ricerca.Clear();
+            NuovoNome.Clear();
+            NuovoPrezzo.Clear();
         }
     }
 }
