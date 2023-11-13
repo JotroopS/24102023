@@ -51,12 +51,19 @@ namespace _24102023
             else
             {
                 p[dim].nome = Nome.Text;
-                p[dim].prezzo = float.Parse(Prezzo.Text);
-                aggiungi(p[dim].nome, p[dim].prezzo, percorso);
-                dim++;
-                indice++;
-                Nome.Clear();
-                Prezzo.Clear();
+                if (double.TryParse(Prezzo.Text, out p[dim].prezzo))
+                {;
+                    aggiungi(p[dim].nome, p[dim].prezzo, percorso);
+                    dim++;
+                    indice++;
+                    Nome.Clear();
+                    Prezzo.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Devi inserire un numero");
+                    Prezzo.Clear();
+                }
             }
         }
             private void aggiungi(string nome, double prezzo, string percorso)
@@ -73,8 +80,17 @@ namespace _24102023
         }
         private void Reset_Click(object sender, EventArgs e)
         {
-            resetta(percorso);
-            MessageBox.Show("Resettato");
+            DialogResult result = MessageBox.Show("Sei sicuro di voler resettare il file?","Conferma", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                resetta(percorso);
+                MessageBox.Show("File resettato");
+            }
+            else
+            {
+                MessageBox.Show("Il file non è stato resettato");
+            }
+            
         }
         private int Indice(string nome)
         {
@@ -114,6 +130,7 @@ namespace _24102023
                 writer.Write(bytes);
                 writer.Close();
                 salva.Close();
+                MessageBox.Show("Prodotto modificato");
             }
         }
         public void CancellazioneF(string percorso)
@@ -179,16 +196,31 @@ namespace _24102023
             }
             else
             {
-                Modifica(NuovoNome.Text, double.Parse(NuovoPrezzo.Text), percorso, riga);
-                RicercaMod.Clear();
-                NuovoNome.Clear();
-                NuovoPrezzo.Clear();
+                if (double.TryParse(NuovoPrezzo.Text, out double nuovoprezzo))
+                {
+                    Modifica(NuovoNome.Text, double.Parse(NuovoPrezzo.Text), percorso, riga);
+                    RicercaMod.Clear();
+                    NuovoNome.Clear();
+                    NuovoPrezzo.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Devi inserire un numero");
+                    NuovoPrezzo.Clear();
+                }
             }
         }
         private void ApriFile_Click(object sender, EventArgs e)
         {
-            string file = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Salva.dat");
-            System.Diagnostics.Process.Start(file);
+            if (File.Exists("Salva.dat"))
+            {
+                string file = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Salva.dat");
+                System.Diagnostics.Process.Start(file);
+            }
+            else
+            {
+                MessageBox.Show("Il file non è presente");
+            }
         }
         public string[] ricercaprod(string nome)
         {
@@ -331,7 +363,6 @@ namespace _24102023
                     }
                     else
                     {
-                        Lista.Items.Add("");
                         lettura = leggi.ReadLine();
                     }
                 }
