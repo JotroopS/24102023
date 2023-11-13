@@ -69,6 +69,7 @@ namespace _24102023
         private void resetta(string percorso)
         {
             File.WriteAllText(percorso, string.Empty);
+            Lista.Items.Clear();
         }
         private void Reset_Click(object sender, EventArgs e)
         {
@@ -311,6 +312,41 @@ namespace _24102023
         {
             Recuper(percorso, RicercaRec.Text, riga);
             RicercaRec.Clear();
+        }
+        public void Visual(string percorso)
+        {
+            string lettura;
+            StreamReader leggi = new StreamReader(percorso);
+            lettura = leggi.ReadLine();
+            Lista.Items.Clear();
+            if (File.Exists(percorso))
+            {
+                while (lettura != null)
+                {
+                    string[] dati = lettura.Split(';');
+                    if (dati[3] == "0")
+                    {
+                        Lista.Items.Add(lettura);
+                        lettura = leggi.ReadLine();
+                    }
+                    else
+                    {
+                        Lista.Items.Add("");
+                        lettura = leggi.ReadLine();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Il file è vuoto o no esiste");
+            }
+            leggi.Close();
+        }
+
+        private void Visualizza_Click(object sender, EventArgs e)
+        {
+            Visual(percorso);
+            MessageBox.Show("Tutti i prodotti sono stati visualizzati");
         }
     }
 }

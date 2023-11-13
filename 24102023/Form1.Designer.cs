@@ -49,43 +49,41 @@
             this.RicercaMod = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.RicercaRec = new System.Windows.Forms.TextBox();
+            this.Visualizza = new System.Windows.Forms.Button();
+            this.Lista = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 84);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(2, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 20);
+            this.label1.Size = new System.Drawing.Size(48, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nome";
             // 
             // Nome
             // 
-            this.Nome.Location = new System.Drawing.Point(7, 108);
-            this.Nome.Margin = new System.Windows.Forms.Padding(4);
+            this.Nome.Location = new System.Drawing.Point(5, 88);
             this.Nome.Name = "Nome";
-            this.Nome.Size = new System.Drawing.Size(131, 22);
+            this.Nome.Size = new System.Drawing.Size(99, 20);
             this.Nome.TabIndex = 1;
             // 
             // Prezzo
             // 
-            this.Prezzo.Location = new System.Drawing.Point(146, 108);
-            this.Prezzo.Margin = new System.Windows.Forms.Padding(4);
+            this.Prezzo.Location = new System.Drawing.Point(110, 88);
             this.Prezzo.Name = "Prezzo";
-            this.Prezzo.Size = new System.Drawing.Size(64, 22);
+            this.Prezzo.Size = new System.Drawing.Size(49, 20);
             this.Prezzo.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(142, 84);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(106, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 20);
+            this.label2.Size = new System.Drawing.Size(54, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Prezzo";
             // 
@@ -93,66 +91,59 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(306, 84);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(230, 68);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(268, 20);
+            this.label3.Size = new System.Drawing.Size(218, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "Inserisci il prodotto da cercare";
             // 
             // Ricerca
             // 
-            this.Ricerca.Location = new System.Drawing.Point(310, 109);
-            this.Ricerca.Margin = new System.Windows.Forms.Padding(4);
+            this.Ricerca.Location = new System.Drawing.Point(232, 89);
             this.Ricerca.Name = "Ricerca";
-            this.Ricerca.Size = new System.Drawing.Size(321, 22);
+            this.Ricerca.Size = new System.Drawing.Size(242, 20);
             this.Ricerca.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(188, 280);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(2, 259);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(203, 20);
+            this.label4.Size = new System.Drawing.Size(165, 16);
             this.label4.TabIndex = 6;
             this.label4.Text = "Inserisci il nuovo nome";
             // 
             // NuovoNome
             // 
-            this.NuovoNome.Location = new System.Drawing.Point(192, 304);
-            this.NuovoNome.Margin = new System.Windows.Forms.Padding(4);
+            this.NuovoNome.Location = new System.Drawing.Point(5, 279);
             this.NuovoNome.Name = "NuovoNome";
-            this.NuovoNome.Size = new System.Drawing.Size(199, 22);
+            this.NuovoNome.Size = new System.Drawing.Size(150, 20);
             this.NuovoNome.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(188, 330);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(2, 303);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(215, 20);
+            this.label5.Size = new System.Drawing.Size(173, 16);
             this.label5.TabIndex = 8;
             this.label5.Text = "Inserisci il nuovo prezzo";
             // 
             // NuovoPrezzo
             // 
-            this.NuovoPrezzo.Location = new System.Drawing.Point(192, 354);
-            this.NuovoPrezzo.Margin = new System.Windows.Forms.Padding(4);
+            this.NuovoPrezzo.Location = new System.Drawing.Point(5, 322);
             this.NuovoPrezzo.Name = "NuovoPrezzo";
-            this.NuovoPrezzo.Size = new System.Drawing.Size(225, 22);
+            this.NuovoPrezzo.Size = new System.Drawing.Size(170, 20);
             this.NuovoPrezzo.TabIndex = 9;
             // 
             // Aggiungi
             // 
             this.Aggiungi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Aggiungi.Location = new System.Drawing.Point(7, 138);
-            this.Aggiungi.Margin = new System.Windows.Forms.Padding(4);
+            this.Aggiungi.Location = new System.Drawing.Point(5, 112);
             this.Aggiungi.Name = "Aggiungi";
-            this.Aggiungi.Size = new System.Drawing.Size(199, 78);
+            this.Aggiungi.Size = new System.Drawing.Size(149, 63);
             this.Aggiungi.TabIndex = 12;
             this.Aggiungi.Text = "Aggiungi";
             this.Aggiungi.UseVisualStyleBackColor = true;
@@ -161,10 +152,9 @@
             // Reset
             // 
             this.Reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Reset.Location = new System.Drawing.Point(577, 343);
-            this.Reset.Margin = new System.Windows.Forms.Padding(4);
+            this.Reset.Location = new System.Drawing.Point(276, 262);
             this.Reset.Name = "Reset";
-            this.Reset.Size = new System.Drawing.Size(163, 78);
+            this.Reset.Size = new System.Drawing.Size(122, 63);
             this.Reset.TabIndex = 24;
             this.Reset.Text = "Reset";
             this.Reset.UseVisualStyleBackColor = true;
@@ -173,10 +163,9 @@
             // CancellaF
             // 
             this.CancellaF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CancellaF.Location = new System.Drawing.Point(310, 138);
-            this.CancellaF.Margin = new System.Windows.Forms.Padding(4);
+            this.CancellaF.Location = new System.Drawing.Point(232, 112);
             this.CancellaF.Name = "CancellaF";
-            this.CancellaF.Size = new System.Drawing.Size(155, 78);
+            this.CancellaF.Size = new System.Drawing.Size(116, 63);
             this.CancellaF.TabIndex = 25;
             this.CancellaF.Text = "Cancellazione fisica";
             this.CancellaF.UseVisualStyleBackColor = true;
@@ -185,10 +174,9 @@
             // Modif
             // 
             this.Modif.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Modif.Location = new System.Drawing.Point(192, 384);
-            this.Modif.Margin = new System.Windows.Forms.Padding(4);
+            this.Modif.Location = new System.Drawing.Point(5, 347);
             this.Modif.Name = "Modif";
-            this.Modif.Size = new System.Drawing.Size(225, 77);
+            this.Modif.Size = new System.Drawing.Size(169, 63);
             this.Modif.TabIndex = 26;
             this.Modif.Text = "Modifica";
             this.Modif.UseVisualStyleBackColor = true;
@@ -197,9 +185,10 @@
             // ApriFile
             // 
             this.ApriFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ApriFile.Location = new System.Drawing.Point(577, 261);
+            this.ApriFile.Location = new System.Drawing.Point(276, 194);
+            this.ApriFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ApriFile.Name = "ApriFile";
-            this.ApriFile.Size = new System.Drawing.Size(163, 78);
+            this.ApriFile.Size = new System.Drawing.Size(122, 63);
             this.ApriFile.TabIndex = 27;
             this.ApriFile.Text = "Apri file";
             this.ApriFile.UseVisualStyleBackColor = true;
@@ -208,9 +197,10 @@
             // CancellazioneL
             // 
             this.CancellazioneL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CancellazioneL.Location = new System.Drawing.Point(472, 136);
+            this.CancellazioneL.Location = new System.Drawing.Point(354, 112);
+            this.CancellazioneL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CancellazioneL.Name = "CancellazioneL";
-            this.CancellazioneL.Size = new System.Drawing.Size(159, 78);
+            this.CancellazioneL.Size = new System.Drawing.Size(120, 63);
             this.CancellazioneL.TabIndex = 28;
             this.CancellazioneL.Text = "Cancellazione logica";
             this.CancellazioneL.UseVisualStyleBackColor = true;
@@ -219,9 +209,10 @@
             // Recupera
             // 
             this.Recupera.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Recupera.Location = new System.Drawing.Point(715, 136);
+            this.Recupera.Location = new System.Drawing.Point(536, 111);
+            this.Recupera.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Recupera.Name = "Recupera";
-            this.Recupera.Size = new System.Drawing.Size(264, 76);
+            this.Recupera.Size = new System.Drawing.Size(198, 62);
             this.Recupera.TabIndex = 29;
             this.Recupera.Text = "Recupera";
             this.Recupera.UseVisualStyleBackColor = true;
@@ -231,43 +222,66 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(188, 232);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(2, 219);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(268, 20);
+            this.label6.Size = new System.Drawing.Size(218, 16);
             this.label6.TabIndex = 30;
             this.label6.Text = "Inserisci il prodotto da cercare";
             // 
             // RicercaMod
             // 
-            this.RicercaMod.Location = new System.Drawing.Point(192, 255);
+            this.RicercaMod.Location = new System.Drawing.Point(5, 237);
+            this.RicercaMod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RicercaMod.Name = "RicercaMod";
-            this.RicercaMod.Size = new System.Drawing.Size(264, 22);
+            this.RicercaMod.Size = new System.Drawing.Size(199, 20);
             this.RicercaMod.TabIndex = 31;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(711, 84);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(533, 68);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(268, 20);
+            this.label7.Size = new System.Drawing.Size(218, 16);
             this.label7.TabIndex = 32;
             this.label7.Text = "Inserisci il prodotto da cercare";
             // 
             // RicercaRec
             // 
-            this.RicercaRec.Location = new System.Drawing.Point(715, 110);
+            this.RicercaRec.Location = new System.Drawing.Point(536, 89);
+            this.RicercaRec.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RicercaRec.Name = "RicercaRec";
-            this.RicercaRec.Size = new System.Drawing.Size(264, 22);
+            this.RicercaRec.Size = new System.Drawing.Size(199, 20);
             this.RicercaRec.TabIndex = 33;
+            // 
+            // Visualizza
+            // 
+            this.Visualizza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Visualizza.Location = new System.Drawing.Point(276, 331);
+            this.Visualizza.Name = "Visualizza";
+            this.Visualizza.Size = new System.Drawing.Size(122, 62);
+            this.Visualizza.TabIndex = 34;
+            this.Visualizza.Text = "Visualizza i prodotti";
+            this.Visualizza.UseVisualStyleBackColor = true;
+            this.Visualizza.Click += new System.EventHandler(this.Visualizza_Click);
+            // 
+            // Lista
+            // 
+            this.Lista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lista.FormattingEnabled = true;
+            this.Lista.ItemHeight = 16;
+            this.Lista.Location = new System.Drawing.Point(448, 186);
+            this.Lista.Name = "Lista";
+            this.Lista.Size = new System.Drawing.Size(302, 244);
+            this.Lista.TabIndex = 35;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Lista);
+            this.Controls.Add(this.Visualizza);
             this.Controls.Add(this.RicercaRec);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.RicercaMod);
@@ -289,7 +303,6 @@
             this.Controls.Add(this.Prezzo);
             this.Controls.Add(this.Nome);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -321,6 +334,8 @@
         private System.Windows.Forms.TextBox RicercaMod;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox RicercaRec;
+        private System.Windows.Forms.Button Visualizza;
+        private System.Windows.Forms.ListBox Lista;
     }
 }
 
