@@ -51,13 +51,14 @@
             this.RicercaRec = new System.Windows.Forms.TextBox();
             this.Visualizza = new System.Windows.Forms.Button();
             this.Lista = new System.Windows.Forms.ListBox();
+            this.Elimina1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(2, 68);
+            this.label1.Location = new System.Drawing.Point(2, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 16);
             this.label1.TabIndex = 0;
@@ -65,14 +66,14 @@
             // 
             // Nome
             // 
-            this.Nome.Location = new System.Drawing.Point(5, 88);
+            this.Nome.Location = new System.Drawing.Point(5, 44);
             this.Nome.Name = "Nome";
             this.Nome.Size = new System.Drawing.Size(99, 20);
             this.Nome.TabIndex = 1;
             // 
             // Prezzo
             // 
-            this.Prezzo.Location = new System.Drawing.Point(110, 88);
+            this.Prezzo.Location = new System.Drawing.Point(110, 44);
             this.Prezzo.Name = "Prezzo";
             this.Prezzo.Size = new System.Drawing.Size(49, 20);
             this.Prezzo.TabIndex = 2;
@@ -81,7 +82,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(106, 68);
+            this.label2.Location = new System.Drawing.Point(107, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 16);
             this.label2.TabIndex = 3;
@@ -91,7 +92,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(230, 68);
+            this.label3.Location = new System.Drawing.Point(229, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(218, 16);
             this.label3.TabIndex = 4;
@@ -99,7 +100,7 @@
             // 
             // Ricerca
             // 
-            this.Ricerca.Location = new System.Drawing.Point(232, 89);
+            this.Ricerca.Location = new System.Drawing.Point(232, 93);
             this.Ricerca.Name = "Ricerca";
             this.Ricerca.Size = new System.Drawing.Size(242, 20);
             this.Ricerca.TabIndex = 5;
@@ -141,9 +142,9 @@
             // Aggiungi
             // 
             this.Aggiungi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Aggiungi.Location = new System.Drawing.Point(5, 112);
+            this.Aggiungi.Location = new System.Drawing.Point(5, 71);
             this.Aggiungi.Name = "Aggiungi";
-            this.Aggiungi.Size = new System.Drawing.Size(149, 63);
+            this.Aggiungi.Size = new System.Drawing.Size(156, 63);
             this.Aggiungi.TabIndex = 12;
             this.Aggiungi.Text = "Aggiungi";
             this.Aggiungi.UseVisualStyleBackColor = true;
@@ -152,7 +153,7 @@
             // Reset
             // 
             this.Reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Reset.Location = new System.Drawing.Point(276, 262);
+            this.Reset.Location = new System.Drawing.Point(276, 254);
             this.Reset.Name = "Reset";
             this.Reset.Size = new System.Drawing.Size(122, 63);
             this.Reset.TabIndex = 24;
@@ -163,7 +164,7 @@
             // CancellaF
             // 
             this.CancellaF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CancellaF.Location = new System.Drawing.Point(232, 112);
+            this.CancellaF.Location = new System.Drawing.Point(232, 118);
             this.CancellaF.Name = "CancellaF";
             this.CancellaF.Size = new System.Drawing.Size(116, 63);
             this.CancellaF.TabIndex = 25;
@@ -185,8 +186,8 @@
             // ApriFile
             // 
             this.ApriFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ApriFile.Location = new System.Drawing.Point(276, 194);
-            this.ApriFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ApriFile.Location = new System.Drawing.Point(276, 186);
+            this.ApriFile.Margin = new System.Windows.Forms.Padding(2);
             this.ApriFile.Name = "ApriFile";
             this.ApriFile.Size = new System.Drawing.Size(122, 63);
             this.ApriFile.TabIndex = 27;
@@ -197,8 +198,8 @@
             // CancellazioneL
             // 
             this.CancellazioneL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CancellazioneL.Location = new System.Drawing.Point(354, 112);
-            this.CancellazioneL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CancellazioneL.Location = new System.Drawing.Point(353, 118);
+            this.CancellazioneL.Margin = new System.Windows.Forms.Padding(2);
             this.CancellazioneL.Name = "CancellazioneL";
             this.CancellazioneL.Size = new System.Drawing.Size(120, 63);
             this.CancellazioneL.TabIndex = 28;
@@ -210,7 +211,7 @@
             // 
             this.Recupera.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Recupera.Location = new System.Drawing.Point(536, 111);
-            this.Recupera.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Recupera.Margin = new System.Windows.Forms.Padding(2);
             this.Recupera.Name = "Recupera";
             this.Recupera.Size = new System.Drawing.Size(198, 62);
             this.Recupera.TabIndex = 29;
@@ -231,7 +232,7 @@
             // RicercaMod
             // 
             this.RicercaMod.Location = new System.Drawing.Point(5, 237);
-            this.RicercaMod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RicercaMod.Margin = new System.Windows.Forms.Padding(2);
             this.RicercaMod.Name = "RicercaMod";
             this.RicercaMod.Size = new System.Drawing.Size(199, 20);
             this.RicercaMod.TabIndex = 31;
@@ -249,7 +250,7 @@
             // RicercaRec
             // 
             this.RicercaRec.Location = new System.Drawing.Point(536, 89);
-            this.RicercaRec.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RicercaRec.Margin = new System.Windows.Forms.Padding(2);
             this.RicercaRec.Name = "RicercaRec";
             this.RicercaRec.Size = new System.Drawing.Size(199, 20);
             this.RicercaRec.TabIndex = 33;
@@ -257,7 +258,7 @@
             // Visualizza
             // 
             this.Visualizza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Visualizza.Location = new System.Drawing.Point(276, 331);
+            this.Visualizza.Location = new System.Drawing.Point(276, 322);
             this.Visualizza.Name = "Visualizza";
             this.Visualizza.Size = new System.Drawing.Size(122, 62);
             this.Visualizza.TabIndex = 34;
@@ -275,11 +276,23 @@
             this.Lista.Size = new System.Drawing.Size(302, 244);
             this.Lista.TabIndex = 35;
             // 
+            // Elimina1
+            // 
+            this.Elimina1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Elimina1.Location = new System.Drawing.Point(5, 140);
+            this.Elimina1.Name = "Elimina1";
+            this.Elimina1.Size = new System.Drawing.Size(156, 62);
+            this.Elimina1.TabIndex = 36;
+            this.Elimina1.Text = "Elimina una quantità";
+            this.Elimina1.UseVisualStyleBackColor = true;
+            this.Elimina1.Click += new System.EventHandler(this.Elimina1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Elimina1);
             this.Controls.Add(this.Lista);
             this.Controls.Add(this.Visualizza);
             this.Controls.Add(this.RicercaRec);
@@ -336,6 +349,7 @@
         private System.Windows.Forms.TextBox RicercaRec;
         private System.Windows.Forms.Button Visualizza;
         private System.Windows.Forms.ListBox Lista;
+        private System.Windows.Forms.Button Elimina1;
     }
 }
 

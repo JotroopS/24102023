@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.LinkLabel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace _24102023
@@ -52,7 +53,7 @@ namespace _24102023
             {
                 p[dim].nome = Nome.Text;
                 if (double.TryParse(Prezzo.Text, out p[dim].prezzo))
-                {;
+                {
                     aggiungi(p[dim].nome, p[dim].prezzo, percorso);
                     dim++;
                     indice++;
@@ -66,13 +67,40 @@ namespace _24102023
                 }
             }
         }
-            private void aggiungi(string nome, double prezzo, string percorso)
+        private void aggiungi(string nome, double prezzo, string percorso)
+        {
+            string[] salva = File.ReadAllLines(percorso);
+            bool prodottouguale = false;
+            for (int i = 0; i < salva.Length; i++)
+            {
+                string[] dati = salva[i].Split(';');
+                if (dati[0] == nome && double.TryParse(dati[1], out double prezzouguale))
+                {
+                    if (prezzo == prezzouguale)
+                    {
+                        int nprodotti;
+                        if (int.TryParse(dati[2], out nprodotti))
+                        {
+                            nprodotti++;
+                            salva[i] = $"{nome};{prezzo};{nprodotti};0;".PadRight(riga - 4) + "##";
+                            prodottouguale = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (!prodottouguale)
             {
                 var apertura = new FileStream(percorso, FileMode.Append, FileAccess.Write, FileShare.Read);
-                StreamWriter salva = new StreamWriter(apertura);
-                salva.WriteLine($"{nome};{prezzo};1;0;".PadRight(riga - 4) + "##");
-                salva.Close();
+                StreamWriter scrivi = new StreamWriter(apertura);
+                scrivi.WriteLine($"{nome};{prezzo};1;0;".PadRight(riga - 4) + "##");
+                scrivi.Close();
             }
+            else
+            {
+                File.WriteAllLines(percorso, salva);
+            }
+        }
         private void resetta(string percorso)
         {
             File.WriteAllText(percorso, string.Empty);
@@ -138,20 +166,16 @@ namespace _24102023
             int indice = Indice(Ricerca.Text);
             if (string.IsNullOrEmpty(Ricerca.Text))
             {
-                // se la text box è vuota
                 MessageBox.Show("Inserire un prodotto");
                 return;
             }
             else if (indice == -1)
             {
-                // se il prodotto non è presente
                 MessageBox.Show("Il prodotto non esiste");
             }
             else if (indice >= 0)
             {
                 List<string> righe = new List<string>();
-
-                // legge tutte le righe dal file e salva in memoria, escludendo quella da eliminare
                 using (StreamReader salva = File.OpenText(percorso))
                 {
                     string lettore;
@@ -160,11 +184,7 @@ namespace _24102023
                         righe.Add(lettore);
                     }
                 }
-
-                // rimuove la riga desiderata
                 righe.RemoveAt(indice);
-
-                // scrive tutte le righe aggiornate nel file
                 using (StreamWriter scrivi = new StreamWriter(percorso, false))
                 {
                     foreach (string riga in righe)
@@ -246,13 +266,11 @@ namespace _24102023
             int indice = Indice(Ricerca.Text);
             if (string.IsNullOrEmpty(Ricerca.Text))
             {
-                // se la text box è vuota
                 MessageBox.Show("Inserire un prodotto");
                 return;
             }
             else if (indice == -1)
-            {
-                // se il prodotto non è presente
+            {  
                 MessageBox.Show("Il prodotto non esiste");
             }
             else if (indice >= 0)
@@ -369,7 +387,7 @@ namespace _24102023
             }
             else
             {
-                MessageBox.Show("Il file è vuoto o no esiste");
+                MessageBox.Show("Il file è vuoto o non esiste");
             }
             leggi.Close();
         }
@@ -378,6 +396,64 @@ namespace _24102023
         {
             Visual(percorso);
             MessageBox.Show("Tutti i prodotti sono stati visualizzati");
+        }
+
+        private void Elimina1_Click(object sender, EventArgs e)
+        {
+            string[] salva = File.ReadAllLines(percorso);
+            if (string.IsNullOrEmpty(Nome.Text))
+            {
+                MessageBox.Show("Inserire un nome");
+            }
+            else if (string.IsNullOrEmpty(Prezzo.Text))
+            {
+                MessageBox.Show("Inserire un prezzo");
+            }
+            else
+            {
+                 for (int i = 0; i < salva.Length; i++)
+                 {
+                     string[] dati = salva[i].Split(';');
+                     if (dati[0] == Nome.Text && double.TryParse(dati[1], out double prezzouguale))
+                     {
+                         if (Prezzo.Text == prezzouguale.ToString())
+                         {
+                             if (int.TryParse(dati[2], out int nprodotti))
+                             {
+                                 if (nprodotti >= 2)
+                                 {
+                                     nprodotti--;
+                                     salva[i] = $"{Nome.Text};{Prezzo.Text};{nprodotti};0;".PadRight(riga - 4) + "##";
+                                    MessageBox.Show("Prodotto eliminato di 1 quantità");
+                                     Nome.Clear();
+                                     Prezzo.Clear();
+                                     break;
+                                 }
+                                 else
+                                 {
+                                     MessageBox.Show("Il prodotto deve essere in una quantità maggiore di 1");
+                                     Nome.Clear();
+                                     Prezzo.Clear();
+                                     break;
+                                 }
+                             }
+                         }
+                         else
+                         {
+                             MessageBox.Show("Il prodotto non esiste/ha quantità 1");
+                             Nome.Clear();
+                             Prezzo.Clear();
+                         }
+                     }
+                     else if (dati[0] != Nome.Text)
+                     {
+                         MessageBox.Show("Il prodotto non esiste/ha quantità 1");
+                         Nome.Clear();
+                         Prezzo.Clear();
+                     }
+                 }
+                 File.WriteAllLines(percorso, salva);
+            }
         }
     }
 }
